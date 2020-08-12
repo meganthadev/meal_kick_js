@@ -8,28 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
     createRecipeForm.addEventListener("submit", (e) => createFormHandler(e))
   })
    
-   function getRecipes() {
+function getRecipes() {
       fetch(endPoint) 
        .then(response => response.json())
        .then(recipes => {
-           recipes.data.forEach(recipe => {
-               render(recipe) 
+           recipes.data.forEach(recipe => { //recipes.data regards to serializer, iterate over serialied data
+            let newRecipe =  new Recipe(recipe, recipe.attributes)  //passed recipe data to new instance of recipe class and construct obj w/ it
+            document.querySelector('#recipe-container').innerHTML += newRecipe.renderRecipeCard()
            })
-           .catch(err => console.log(err))
+         //  .catch(err => console.log(err))
        })
-}
-
-function render(recipe) {
-    const recipeMarkup = `
-        <div data-id=${recipe.id}>
-                   <h3>${recipe.attributes.title}</h3>
-                   <p>${recipe.attributes.category.name}</p>
-                   <button data-id=${recipe.id}>View Full Recipe</button>
-                   </div>
-                   <br><br>`; 
-    
-       document.querySelector('#recipe-container').innerHTML += recipeMarkup
- }   
+  }
 
 
 function createFormHandler(e) {
@@ -48,11 +37,14 @@ function postFetch(title, ingredients, instructions, category_id) {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(bodyData)
     })
-    .then(response => response.json())
+    .then(response => response.json()) 
     .then(recipe => {
         console.log(recipe);
         const recipeData = recipe.data 
         //render JSON response
-        render(recipeData)
+        let newRecipe =  new Recipe(recipeData, recipeData.attributes)
+            document.querySelector('#recipe-container').innerHTML += newRecipe.renderRecipeCard()
     })
+
+    
 }
