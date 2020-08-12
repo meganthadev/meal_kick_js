@@ -36,5 +36,25 @@ function createFormHandler(e) {
 }
 
 function postFetch(title, ingredients, instructions, category_id) {
-    console.log(title, ingredients, instructions, category_id);
+    const bodyData = {title, ingredients, instructions, category_id}
+    fetch(endPoint, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(bodyData)
+    })
+    .then(response => response.json())
+    .then(recipe => {
+        console.log(recipe);
+        const recipeData = recipe.data 
+        //render JSON response
+        const recipeMarkup = `
+        <div data-id=${recipe.id}>
+                   <h3>${recipeData.attributes.title}</h3>
+                   <p>${recipeData.attributes.category.name}</p>
+                   <button data-id=${recipeData.id}>View Full Recipe</button>
+                   </div>
+                   <br><br>`;
+    
+       document.querySelector('#recipe-container').innerHTML += recipeMarkup
+    })
 }
