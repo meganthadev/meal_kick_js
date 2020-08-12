@@ -1,4 +1,4 @@
-class Recipe{
-
+class Recipe {
+    
 
 }
