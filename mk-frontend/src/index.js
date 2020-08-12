@@ -13,19 +13,24 @@ document.addEventListener('DOMContentLoaded', () => {
        .then(response => response.json())
        .then(recipes => {
            recipes.data.forEach(recipe => {
-               const recipeMarkup = `
-                   <div data-id=${recipe.id}>
+               render(recipe) 
+           })
+           .catch(err => console.log(err))
+       })
+}
+
+function render(recipe) {
+    const recipeMarkup = `
+        <div data-id=${recipe.id}>
                    <h3>${recipe.attributes.title}</h3>
-                   <img src=${recipe.attributes.image_url} height="200" width="250">
                    <p>${recipe.attributes.category.name}</p>
                    <button data-id=${recipe.id}>View Full Recipe</button>
                    </div>
-                   <br><br>`;
-   
-               document.querySelector('#recipe-container').innerHTML += recipeMarkup
-           })
-       })
-}
+                   <br><br>`; 
+    
+       document.querySelector('#recipe-container').innerHTML += recipeMarkup
+ }   
+
 
 function createFormHandler(e) {
     e.preventDefault()
@@ -33,12 +38,11 @@ function createFormHandler(e) {
     const ingredientsInput = document.querySelector('#input-ingredients').value
     const instructionsInput = document.querySelector('#input-instructions').value
     const categoryId = parseInt(document.querySelector('#categories').value)
-    const imageInput = document.querySelector('#input-url').value
-    postFetch(titleInput, ingredientsInput, instructionsInput, categoryId,  imageInput) 
+    postFetch(titleInput, ingredientsInput, instructionsInput, categoryId) 
 }
 
-function postFetch(title, ingredients, instructions, category_id, image_url) {
-    const bodyData = {title, ingredients, instructions, category_id, image_url}
+function postFetch(title, ingredients, instructions, category_id) {
+    const bodyData = {title, ingredients, instructions, category_id}
     fetch(endPoint, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -49,15 +53,6 @@ function postFetch(title, ingredients, instructions, category_id, image_url) {
         console.log(recipe);
         const recipeData = recipe.data 
         //render JSON response
-        const recipeMarkup = `
-        <div data-id=${recipe.id}>
-                   <h3>${recipeData.attributes.title}</h3>
-                   <img src=${recipe.attributes.image_url} height="200" width="250">
-                   <p>${recipeData.attributes.category.name}</p>
-                   <button data-id=${recipeData.id}>View Full Recipe</button>
-                   </div>
-                   <br><br>`;
-    
-       document.querySelector('#recipe-container').innerHTML += recipeMarkup
+        render(recipeData)
     })
 }
