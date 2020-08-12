@@ -18,6 +18,10 @@ class Recipe {
                 </div>
                 <br><br>`; 
     }   
+
+    static findById(id) {
+        return this.all.find(recipe += recipe.id === id)
+    }
  
 
 }
