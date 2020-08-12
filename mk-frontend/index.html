@@ -2,27 +2,45 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
-    <title>MealKick!</title>
+    <script type="text/javascript" src="src/index.js"></script>
+    <script type="text/javascript" src="src/recipe.js"></script>
+      <title>MealKick!</title>
   </head>
   <body>
-   <h1>Welcome to Recipe Land!</h1> 
-   <div id="recipe-form-container">
-      <p>Add A New Recipe:</p>
-       <form id="recipe-form">
-        <label>Title:</label>
-        <input type="text" name="title" value="">
+   <h1 style="text-align: center;">Welcome to the Land of Recipes!</h1> 
+
+   <h2 style="text-align: center;">All Recipe Categories:</h2>
+
+   <div id="category-container" style="text-align: center;"></div>
+     </div><br>
+     <div class="form-container" style="text-align: center;">
+       <form id="create-recipe-form" style="">
+
+       <p>Create a New Recipe!</p>
+          <input id='input-title' type="text" name="title" value="" placeholder="Add Recipe Title..." class="input-text">
+          <br><br>
+          <textarea id='input-ingredients' name="ingredients" rows="8" cols="50" value="" placeholder="Add Recipe Ingredients..."></textarea>
+          <textarea id='input-instructions' name="instructions" rows="8" cols="80" value="" placeholder="Add Recipe Instructions..."></textarea>
+         <br><br>
+
+         <p>Select a Category:</p>
+         <select id="categories" name="categories">
+           <option value="1">Breakfast</option>
+           <option value="2">Lunch</option>
+           <option value="3">Snacks</option>
+           <option value="4">Dinner</option>
+           <option value="5">Dessert</option>
+           <option value="6">Drinks</option>
+         </select>
         <br/><br/>
-        <label>Ingredients:</label>
-        <input type="text" name="ingredients" value="">
-        <br/><br/>
-        <label>Instructions:</label>
-        <input type="text-box" name="instructions" value="">
-        <br/><br/>
-        <input type="submit" value="Submit Recipe">
-      </form>
-    </div>
+
+        <input id="create-button" type="submit" name="submit" value="Submit New Recipe">
+      </form><br><br>
+      </div>
+
+      <div id="recipe-container">
+
+
+      </div>
   </body>
-  <script type="text/javascript" src="src/recipe.js"></script>
-  <script type="text/javascript" src="src/index.js"></script>
 </html>
