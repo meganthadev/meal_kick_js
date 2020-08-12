@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
                const recipeMarkup = `
                    <div data-id=${recipe.id}>
                    <h3>${recipe.attributes.title}</h3>
+                   <img src=${recipe.attributes.image_url} height="200" width="250">
                    <p>${recipe.attributes.category.name}</p>
                    <button data-id=${recipe.id}>View Full Recipe</button>
                    </div>
@@ -32,11 +33,12 @@ function createFormHandler(e) {
     const ingredientsInput = document.querySelector('#input-ingredients').value
     const instructionsInput = document.querySelector('#input-instructions').value
     const categoryId = parseInt(document.querySelector('#categories').value)
-    postFetch(titleInput, ingredientsInput, instructionsInput, categoryId) 
+    const imageInput = document.querySelector('#input-url').value
+    postFetch(titleInput, ingredientsInput, instructionsInput, categoryId,  imageInput) 
 }
 
-function postFetch(title, ingredients, instructions, category_id) {
-    const bodyData = {title, ingredients, instructions, category_id}
+function postFetch(title, ingredients, instructions, category_id, image_url) {
+    const bodyData = {title, ingredients, instructions, category_id, image_url}
     fetch(endPoint, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
@@ -50,6 +52,7 @@ function postFetch(title, ingredients, instructions, category_id) {
         const recipeMarkup = `
         <div data-id=${recipe.id}>
                    <h3>${recipeData.attributes.title}</h3>
+                   <img src=${recipe.attributes.image_url} height="200" width="250">
                    <p>${recipeData.attributes.category.name}</p>
                    <button data-id=${recipeData.id}>View Full Recipe</button>
                    </div>
