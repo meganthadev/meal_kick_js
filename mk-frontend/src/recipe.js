@@ -20,16 +20,26 @@ class Recipe {
         <div data-id=${this.id}>
                 <h3>${this.title}</h3>
                 <p>${this.category.name}</p>
-                <button data-id=${this.id}>View Full Recipe</button>
+                <button id="full-button" data-id=${this.id}>View Full Recipe</button>
                 </div>
                 <br><br>`; 
     }   
-  
-    }
+
+  //  fullRecipeCard() {
+  //      return `
+   //     <div data-id=${this.id}>
+     //           <h3>${this.title}</h3>
+     //           <h5>${this.category.name}</h5>
+      //          <p>${this.ingredients}</p>
+      //         <p>${this.instructions}</p>
+      //          </div>
+      //          <br><br>`; 
+ //   }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   
-  getRecipes()
+//  getRecipes()
 
     const createRecipeForm = document.querySelector('#create-recipe-form')
     createRecipeForm.addEventListener("submit", (e) => createFormHandler(e))
@@ -38,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     recipeContainer.addEventListener('click', e => {
       const id = parseInt(e.target.dataset.id);
       const recipe = Recipe.findById(id);
-     // document.querySelector('#recipe-container').innerHTML = recipe.findById(id);
+     document.querySelector('#recipe-container').innerHTML == recipe;
       console.log(recipe);
     });
   })
@@ -81,5 +91,32 @@ function postFetch(title, ingredients, instructions, category_id) {
         })
 
 }
+
+// function viewFullRecipe() {
+ //   toggleView()
+  //  fetch(recipeEndPoint) 
+   //    .then(response => response.json())
+    //   .then(recipes => {
+    //       recipes.data.forEach(recipe => { //recipes.data regards to serializer, iterate over serialied data
+      //      let newRecipe =  new Recipe(recipe, recipe.attributes)  //passed recipe data to new instance of recipe class and construct obj w/ it
+       //     document.querySelector('#recipe-container').innerHTML += newRecipe.fullRecipeCard()
+       //    })
+         //  .catch(err => console.log(err))
+     //  })
+  //  }
+
+ //  function toggleView() {
+ //   let fullSelect = document.getElementById('full-button');
+ //   let displaySetting = fullSelect.style.display;
+
+//    if (displaySetting == 'block'){
+      //recipe is visible, hide it >
+ //     fullSelect.style.display = 'none';
+ //   } else {
+      //recipe half hidden, show it >
+ //     fullSelect.style.display = 'block';
+ //   }
+ // }
+
 
 Recipe.all = [];
