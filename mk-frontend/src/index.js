@@ -1,45 +1,53 @@
 const homeEndPoint = "http://localhost:3000/api/v1/categories"
+const allRecipes = [];
 
-  
-  document.addEventListener('DOMContentLoaded', () => {
-    getCategories()
-    const app = new App();
-    app.attachEventListeners();
-  })
 
-  function getCategories() {
-       fetch(homeEndPoint) 
-       .then(response => response.json())
-       .then(categories => {
-        categories.data.forEach(category => { //categories.data regards to serializer, iterate over serialied data
-            const categoryMarkup = `
-            <div data-id=${category.id}>
+document.addEventListener('DOMContentLoaded', () => {
+  getCategories()
+  getRecipes()
+})
+
+function getCategories() {
+  fetch(homeEndPoint)
+    .then(response => response.json())
+    .then(categories => {
+      categories.data.forEach(category => { //categories.data regards to serializer, iterate over serialied data
+        const categoryMarkup = `
+            <div class="categoryPanel" data-id=${category.id}>
               <h3>${category.attributes.name}</h3>
-              <button onclick="toggleCat()" data-id=${category.id}>Show ${category.attributes.name} Recipes</button>
+              <button class="setCategory" data-id=${category.id}>Show ${category.attributes.name} Recipes</button>
               </div>
-              <br><br>
               `
 
-            document.querySelector('#category-container').innerHTML += categoryMarkup
+        document.querySelector('#category-container').innerHTML += categoryMarkup
 
 
-          })
-        })
+      })
+    })
 
-      
- }
 
- function toggleCat() {
-    let catSelect = document.getElementById('recipe-container');
-    let displaySetting = catSelect.style.display;
+}
 
-    if (displaySetting == 'block'){
-      //recipes visible, hide them >
-      catSelect.style.display = 'none';
-    } else {
-      //recipes hidden, show them
-      catSelect.style.display = 'block';
-    }
+
+document.addEventListener("click", (e) => {
+   if (e.target.classList.contains("setCategory")) {
+    const categoryId = e.target.dataset.id
+    const filtRecipes = allRecipes.filter(function (recipe) {
+      return categoryId == recipe.getCategoryId()
+    })
+    renderRecipes(filtRecipes)
   }
+  if (e.target.classList.contains("fullButton")) {
+    const recipeId = e.target.dataset.id
+    const theRecipe = allRecipes.find(function(recipe) {
+      return recipe.id == recipeId
+    })
+    const panel = theRecipe.renderFullRecipe()
+    body.innerHTML += panel
+  }
+  if (e.target.classList.contains("closePanel")) {
+    document.querySelector(".fullRecipe").remove()
+  }
+})
 
-  
+
