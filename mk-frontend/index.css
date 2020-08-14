@@ -11,3 +11,26 @@ h1, h2, h3 {
 #more{
 	display: none;
 }
+
+.category-container {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	
+}
+
+.categoryPanel {
+	width: 300px;
+	margin: 0px;
+}
+
+.fullRecipe{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80vw;
+	height: 90vh;
+	background-color: white;
+	border-radius: 25px;
+}
