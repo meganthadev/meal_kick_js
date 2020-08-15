@@ -15,7 +15,7 @@ class Recipe {
     return this.category.id
   }
 
-   findById(id) {
+   findById(recipe) {
     return this.all.find(recipe => recipe.id === id);
   }
 
@@ -31,11 +31,11 @@ class Recipe {
   }
   renderFullRecipe() {
     return `
-  <div class="fullRecipe">
+  <div class="fullRecipe" data-id=${this.id}>
     <h3>${this.title}</h3>
-    <p>${this.category.name}</p>
-    <p>${this.ingredients}</p>
-    <p>${this.instructions}</p>
+    <p>Category: ${this.category.name}</p>
+    <p>Ingredients: ${this.ingredients}</p>
+    <p>Instructions: ${this.instructions}</p>
     <button class="closePanel">X</button>
    </div>`
   }
@@ -56,6 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(recipe);
   });
 })
+
+
+
 
 function getRecipes() {
   fetch(recipeEndPoint)
