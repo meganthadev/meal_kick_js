@@ -24,10 +24,7 @@ function getCategories() {
 
       })
     })
-
-
 }
-
 
 document.addEventListener("click", (e) => {
    if (e.target.classList.contains("setCategory")) {
@@ -42,6 +39,9 @@ document.addEventListener("click", (e) => {
     const theRecipe = allRecipes.find(function(recipe) {
       return recipe.id == recipeId
     })
+    if (!theRecipe) {
+      return
+    }
     const panel = theRecipe.renderFullRecipe()
     body.innerHTML += panel
   }
