@@ -18,10 +18,7 @@ function getCategories() {
               <button class="setCategory" data-id=${category.id}>Show ${category.attributes.name} Recipes</button>
               </div>
               `
-
         document.querySelector('#category-container').innerHTML += categoryMarkup
-
-
       })
     })
 }

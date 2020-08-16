@@ -15,10 +15,6 @@ class Recipe {
     return this.category.id
   }
 
-   findById(recipe) {
-    return this.all.find(recipe => recipe.id === id);
-  }
-
   renderRecipeCard() {
     return `
         <div data-id=${this.id}>
@@ -51,13 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const recipeContainer = document.querySelector('#recipe-container')
   recipeContainer.addEventListener('click', e => {
     const id = parseInt(e.target.dataset.id);
-    const recipe = Recipe.findById(id);
-    document.querySelector('#recipe-container').innerHTML == recipe;
+    console.log(id);
+    const recipe = allRecipes.reduce( (pv, nv) => { //pv - previous val
+      console.log(nv);
+      return (nv.id == id ) ? nv : pv ;
+    },null);
+   // document.querySelector('#recipe-container').innerHTML == recipe;
     console.log(recipe);
   });
 })
-
-
 
 
 function getRecipes() {
@@ -103,6 +101,7 @@ function postFetch(title, ingredients, instructions, category_id) {
       const recipeData = recipe.data
       //render JSON response
       let newRecipe = new Recipe(recipeData, recipeData.attributes)
+      getRecipes()
       document.querySelector('#recipe-container').innerHTML += newRecipe.renderRecipeCard()
     })
 

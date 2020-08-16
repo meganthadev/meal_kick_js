@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link href="index.css" rel="stylesheet">
-    <script type="text/javascript" src="src/index.js"></script>
-    <script type="text/javascript" src="src/recipe.js"></script>
-          <title>MealKick!</title>
-  </head>
 
-  <body id="body">
-   <h1 style="text-align: center;">Welcome to Your World of Recipes!</h1> 
+<head>
+  <meta charset="utf-8">
+  <link href="index.css" rel="stylesheet">
+  <script type="text/javascript" src="src/index.js"></script>
+  <script type="text/javascript" src="src/recipe.js"></script>
+  <title>MealKick!</title>
+</head>
 
-   <h3 style="text-align: center;">RECIPE CATEGORIES</h3>
+<body id="body">
+  <h1 style="text-align: center;">Welcome to Your World of Recipes!</h1>
 
-   <div id="category-container" style="text-align: center;"></div><br>
+  <h3 style="text-align: center;">RECIPE CATEGORIES</h3>
 
-     <div class="form-container" style="text-align: center;">
-       <form id="create-recipe-form" style="">
+  <div id="category-container" style="text-align: center;"></div><br>
 
-       <h4>Create a New Recipe!</h4>
-          <input id='input-title' type="text" name="title" value="" placeholder="Add Recipe Title..." class="input-text">
-          <br><br>
-          <textarea id='input-ingredients' name="ingredients" rows="8" cols="50" value="" placeholder="Add Recipe Ingredients..."></textarea><br><br>
-          <textarea id='input-instructions' name="instructions" rows="8" cols="80" value="" placeholder="Add Recipe Instructions..."></textarea><br><br>
-         <br><br>
+  <div class="form-container" style="text-align: center;">
+    <form id="create-recipe-form" style="">
 
-         <p>Select a Category:</p>
-         <select id="categories" name="categories">
-           <option value="1">Breakfast</option>
-           <option value="2">Lunch</option>
-           <option value="3">Snacks</option>
-           <option value="4">Dinner</option>
-           <option value="5">Dessert</option>
-           <option value="6">Drinks</option>
-         </select>
-        <br/><br/>
+      <h4>Create a New Recipe!</h4>
+      <input id='input-title' type="text" name="title" value="" placeholder="Add Recipe Title..." class="input-text">
+      <br><br>
+      <textarea id='input-ingredients' name="ingredients" rows="8" cols="50" value=""
+        placeholder="Add Recipe Ingredients..."></textarea><br><br>
+      <textarea id='input-instructions' name="instructions" rows="8" cols="80" value=""
+        placeholder="Add Recipe Instructions..."></textarea><br><br>
+      <br><br>
 
-        <input id="create-button" type="submit" name="submit" value="Submit New Recipe">
+      <p>Select a Category:</p>
+      <select id="categories" name="categories">
+        <option value="1">Breakfast</option>
+        <option value="2">Lunch</option>
+        <option value="3">Snacks</option>
+        <option value="4">Dinner</option>
+        <option value="5">Dessert</option>
+        <option value="6">Drinks</option>
+      </select>
+      <br /><br />
+
+      <input id="create-button" type="submit" name="submit" value="Submit New Recipe">
 
 
-      </form><br><br>
+    </form><br><br>
 
-      </div>
+  </div>
 
-       
-      <div id="recipe-container" style="text-align: center;">
-      </div>
 
-      <div id="recipe-by-category" style="text-align: center;">
-      </div>
+  <div id="recipe-container" style="text-align: center;">
+  </div>
 
-  </body>
+
+
+</body>
+
 </html>
