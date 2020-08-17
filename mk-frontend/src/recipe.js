@@ -1,6 +1,5 @@
 const recipeEndPoint = "http://localhost:3000/api/v1/recipes"
 
-
 class Recipe {
 
   constructor(recipe, recipeAttributes) {
@@ -39,8 +38,6 @@ class Recipe {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-
-
   const createRecipeForm = document.querySelector('#create-recipe-form')
   createRecipeForm.addEventListener("submit", (e) => createFormHandler(e))
   //listen for 'click' event on recipe contain
@@ -48,15 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
   recipeContainer.addEventListener('click', e => {
     const id = parseInt(e.target.dataset.id);
     console.log(id);
-    const recipe = allRecipes.reduce( (pv, nv) => { //pv - previous val
+    const recipe = allRecipes.reduce((pv, nv) => { //pv - previous val, nv - next val
       console.log(nv);
-      return (nv.id == id ) ? nv : pv ;
-    },null);
-   // document.querySelector('#recipe-container').innerHTML == recipe;
+      return (nv.id == id) ? nv : pv;
+    }, null);
+    document.querySelector('#recipe-container').innerHTML == recipe;
     console.log(recipe);
   });
 })
-
 
 function getRecipes() {
   fetch(recipeEndPoint)
@@ -76,7 +72,6 @@ function renderRecipes(data) {
   data.forEach(recipe => {
     target.innerHTML += recipe.renderRecipeCard()
   })
-
 }
 
 function createFormHandler(e) {
