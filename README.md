@@ -1,6 +1,8 @@
 MealKick! Frontend README
 
-Welcome to MealKick! A meal planning app where users can add and share their own recipes for meal planning, as well as comment on other's recipes, in a simple-to-use interface which makes meal planning... a real kick!
+Welcome to MealKick! 
+
+A meal planning / recipe storing app where users can add and share their own recipes ( stretch goal - for meal planning), as well as view those recipes by category , in a simple-to-use SP interface which makes meal planning... a real kick!
 
 Installation Instructions:
 
