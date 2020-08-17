@@ -24,7 +24,7 @@ function getCategories() {
 }
 
 document.addEventListener("click", (e) => {
-   if (e.target.classList.contains("setCategory")) {
+  if (e.target.classList.contains("setCategory")) {
     const categoryId = e.target.dataset.id
     const filtRecipes = allRecipes.filter(function (recipe) {
       return categoryId == recipe.getCategoryId()
@@ -33,7 +33,7 @@ document.addEventListener("click", (e) => {
   }
   if (e.target.classList.contains("fullButton")) {
     const recipeId = e.target.dataset.id
-    const theRecipe = allRecipes.find(function(recipe) {
+    const theRecipe = allRecipes.find(function (recipe) {
       return recipe.id == recipeId
     })
     if (!theRecipe) {
